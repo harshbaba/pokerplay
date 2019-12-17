@@ -18,7 +18,7 @@ class Landing extends React.Component{
       if(groupId.success){
         alert('Enter Group Id');
       }else{
-        fetch('http://localhost:5000/createGroup/', {
+        fetch('https://poker-play.herokuapp.com/createGroup/', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -45,7 +45,7 @@ class Landing extends React.Component{
     if(groupId.success){
       alert('Enter Group Id');
     }else{
-      fetch('http://localhost:5000/enterGroup/', {
+      fetch('https://poker-play.herokuapp.com/enterGroup/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
