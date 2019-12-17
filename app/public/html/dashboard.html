@@ -24,7 +24,7 @@
             if(!localStorage.getItem('name')){
                 window.location.href = location.hostname;
             }
-            var socket = io.connect('http://localhost:5000/');
+            var socket = io.connect('https://poker-play.herokuapp.com/');
             socket.on('connect', function(data) {
                socket.emit('join', {name:localStorage.getItem('name'), groupId:localStorage.getItem('groupId')});
             });
