@@ -1,0 +1,214 @@
+
+  .cards {
+    
+  }
+  .card {
+    position: relative;
+    display: inline-block;
+    width: 172px;
+    height: 240px;
+    font: 16px 'Trebuchet MS';
+    /* margin: 10px; */
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  }
+  .card:before,
+  .card:after {
+    content: attr(value);
+    position: absolute;
+    width: 12px;
+    text-align: center;
+    letter-spacing: -2px;
+  }
+  .card:before {
+    top: 4px;
+    left: 4px;
+  }
+  .card:after {
+    bottom: 4px;
+    right: 4px;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  .card--heart {
+    color: #e44145;
+  }
+  .card--heart:before,
+  .card--heart:after {
+    content: attr(value) ' ♥';
+  }
+  .card--spade {
+    color: #252525;
+  }
+  .card--spade:before,
+  .card--spade:after {
+    content: attr(value) ' ♠';
+  }
+  .card__inner {
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 24px;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+  .card__inner--centered {
+    justify-content: center;
+  }
+  .card__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card__column--centered {
+    justify-content: center;
+  }
+  .card__symbol {
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+  }
+  .card__symbol:before {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  .card--heart .card__symbol:before {
+    content: '♥';
+  }
+  .card--spade .card__symbol:before {
+    content: '♠';
+  }
+  .card__symbol--rotated,
+  .card__symbol:last-of-type {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  .card__symbol:first-of-type {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  .card__symbol--big {
+    flex-basis: 60px;
+  }
+  .card__symbol--huge {
+    flex-basis: 108px;
+  }
+  .title {
+    font: 18px 'Trebuchet MS';
+    color: #444;
+    text-align: center;
+  }
+  
+
+
+  .flip-card {
+    background-color: transparent;
+    width: 172px;
+    height: 242px;
+    perspective: 1000px;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  @-webkit-keyframes flashflip {
+    0% {
+        opacity:0;
+        -webkit-transform: rotatey(-180deg);
+      }
+    100% {
+        opacity:1;
+        -webkit-transform: rotatey(+180deg); 
+      }
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    /* padding: 10px; */
+    -webkit-animation: flashflip 0.01s;
+    box-sizing: border-box;
+  }
+
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card.active .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background: url('../images/back.png') repeat center;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.flip-card-back {
+  /* background-color: #2980b9; */
+  /* color: white; */
+  transform: rotateY(180deg);
+}
+
+.card-list-box{
+  float: left;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.joker_card{
+  width: 172px;
+  height: 240px;
+  /* background-size: 146px; */
+  background: url('../images/joker.png') no-repeat;
+  background-size: 165px;
+}
+
+.card-list{
+  margin:0 -15px;
+  text-align: center;
+}
+.card-list .card{
+  margin:15px;
+}
+.card-in-wrapper{
+  position: relative;
+  display: inline-block;
+}
+.abs-label{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+.card-in-wrapper input:checked + .card{
+  background: #7bc643 !important;
+}
+
+.card-checkbox{
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 168px;
+  height: 238px;
+  z-index: 9;
+  opacity: 0;
+  cursor: pointer;
+}

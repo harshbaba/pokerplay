@@ -1,0 +1,43 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/card.css"/>
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <script src="../js/underscore-min.js"></script>
+        <script src="../js/socket.io.js"></script>
+        <script src="../js/utils.js"></script>
+        <script type="text/babel" src="../components/App/app.jsx"></script>
+        <script type="text/babel" src="../components/Header/header.jsx"></script>
+        <script type="text/babel" src="../components/Dashboard/dashboard.jsx"></script>
+        <script type="text/babel" src="../components/OnlineUsers/onlineUsers.jsx"></script>
+        <script type="text/babel" src="../components/Admin/admin.jsx"></script>
+        <script type="text/babel" src="../components/Card/card.jsx"></script>
+    </head>
+    <body class="dashboard-page">
+        
+        <div id="root"></div>
+        
+        <script type='text/babel'>
+            if(!localStorage.getItem('name')){
+                window.location.href = location.hostname;
+            }
+            var socket = io.connect('http://localhost:5000/dashboard');
+            socket.on('connect', function(data) {
+               socket.emit('join', {name:localStorage.getItem('name'), groupId:$utils.setGroupId()});
+            });
+            var data = {
+                'pageName': 'dashboard',
+                'pageData': null
+            };
+            socket.on('onlineUsers', function(users){
+                 data.pageData = users;
+                 data.isAdmin = $utils.isAdmin(users);
+                 ReactDOM.render(<App data={data} />, document.getElementById('root'));
+            });
+            
+        </script>
+    </body>
+</html>

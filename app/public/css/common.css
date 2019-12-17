@@ -1,0 +1,334 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+button:focus{
+  outline:0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f2f3f5;
+}
+.right{
+    float: right;
+}
+
+.full-page{
+    position: relative;
+    float: left;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 0px;
+}
+button{
+	cursor: pointer;
+	font-family: "Arial";
+	line-height: normal;
+	position: relative;
+    text-decoration: none;
+    text-align: center;
+	-webkit-appearance: none;
+	transition: background-color 300ms ease-out;
+}
+
+h2{
+    font-size: 26px;
+	font-weight: 700;
+}
+
+.main{
+	float: left;
+	width: 100%;
+}
+
+.layout-header{
+	float: left;
+	width: 100%;
+	padding: 15px;
+	box-sizing: border-box;
+	/* border-bottom: 1px solid #b8b9bdd1; */
+	z-index: 99;
+	position: relative;
+	background: #fff;
+	box-shadow: 1px 1px 3px 3px #ecedf1;
+}
+
+.layout-header h2, .layout-footer h2{
+	float: left;
+}
+
+.layout-footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #000;
+}
+
+.page-bg{
+    position:fixed;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.page-bg.active{
+    display: block;
+}
+
+
+/*Dashboard css*/
+body.dashboard-page .full-page{
+    box-sizing: border-box;
+    
+}
+.dashboard-main{
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    box-sizing: border-box;
+    padding-right: 370px;
+    padding-top: 15px;
+    padding-left:15px;
+}
+
+.dashboard-main.admin{
+    padding-left: 260px;
+}
+.online-users-wrap{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 350px;
+    /* max-height: calc(100% - 82px); */
+    /* border-left: 1px solid #ecedf1; */
+    height: 100%;
+    overflow: auto;
+    /* z-index: 99; */
+    background: #fff;
+    padding-top: 57px;
+    box-sizing: border-box;
+    box-shadow: -3px 0px 3px 3px #ecedf1;
+}
+
+.admin-bar-wrap{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    overflow: auto;
+    background: #fff;
+    padding-top: 57px;
+    box-sizing: border-box;
+    box-shadow: -3px 0px 3px 3px #ecedf1;
+}
+
+.admin-bar{
+    float: left;
+    width: 100%;
+    padding:30px 0 0;
+}
+
+.admin-bar .user-icon{
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+
+.admin-bar .user-icon > img{
+    display: inline-block;
+    width: 96%;
+    max-width:175px;
+}
+
+.admin-title{
+    display: block;
+    margin-top: 15px;
+    color: #6c6c6e;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.control-list{
+	float:left;
+	width:100%;
+	margin: 35px 0;
+}
+.control-list > li{
+	float:left;
+	width:100%;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+.control-list-ind{
+	float:left;
+	width:100%;
+	box-sizing: border-box;
+	padding: 0 0px 14px;
+	margin: 7px 0px;
+	border-bottom: 1px solid #b5dc9e;
+	box-sizing: border-box;
+}
+.control-list-ind:last-child{
+	border-bottom:0
+}
+
+
+.control-list-ind button{
+	background: #88ab71;
+	border:0;
+	font-size: 18px;
+	line-height: 45px;
+	text-align: left;
+	width: 100%;
+	height: 45px;
+	color: #fff;
+	border-radius: 3px;
+}
+.control-list-ind:nth-child(even) button{
+        background: #399ab7;
+}
+
+.online-user-main{
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 25px 15px;
+}
+
+.online-user-main > h3{
+	color:#6c6c6e;
+	font-size:20px;
+	line-height: 24px;
+	font-weight: 600;
+}
+.online-user-main .user-list{
+    float: left;
+    width: 100%;
+    margin: 15px 0 0;
+}
+
+.online-user-main .user-list > li{
+    float: left;
+    width: 100%;
+    /* padding: 9px 0; */
+    border-bottom: 1px solid #ecedf1;
+}
+.online-user-main .user-list > li:last-child{
+	border:0
+}
+.online-user-main .user-list .online-user-ind{
+    position: relative;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 30px;
+    background: url('../images/272075.png') no-repeat left center;
+    background-size: 25px;
+    padding: 10px 0 10px 40px;
+}
+.online-user-main .user-list .online-user-ind:before{
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #337b64bd;
+    /* content: ''; */
+}
+
+.online-user-main .user-list .online-user-ind > p{
+    font-size: 18px;
+    line-height: 22px;
+    color: #6c6c6e;
+}
+
+.vote-btn-wrap{
+    float: left;
+    width:100%;
+    text-align: center;
+    margin-top:25px;
+}
+
+.vote-btn-wrap button{
+    background: #88ab71;
+	border:0;
+	font-size: 18px;
+	line-height: 45px;
+	text-align: center;
+	width: 125px;
+	height: 45px;
+	color: #fff;
+	border-radius: 3px;
+}
+
+
+@media (max-width:1199px){
+    .dashboard-main{
+        padding-right: 15px;
+    }
+
+    .online-users-wrap{
+        right:-350px;
+        display: none;
+    }
+}
+

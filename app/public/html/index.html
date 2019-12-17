@@ -1,0 +1,27 @@
+<!Doctype html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+        <link rel="stylesheet" type="text/css" href="../../css/landing.css"/>
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <script src="../js/socket.io.js"></script>
+        <script src="../js/utils.js"></script>
+        <script type="text/babel" src="../components/App/app.jsx"></script>
+        <script type="text/babel" src="../components/Header/header.jsx"></script>
+        <script type="text/babel" src="../components/Dashboard/dashboard.jsx"></script>
+        <script type="text/babel" src="../components/Landing/landing.jsx"></script>
+        <script type="text/babel" src="../components/NamePopup/namePopup.jsx"></script>
+    </head>
+    <body className="landing-page">
+        <div id="root"></div>
+        <script type='text/babel'>
+            let data = {
+                'pageName': 'landing',
+                'pageData': null
+            };
+            ReactDOM.render(<App data={data} />, document.getElementById('root'));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,134 @@
+.layout-landing{
+    float: left;
+    width: 100%;
+    padding: 120px 25px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.inp-grp-section{
+    display: inline-block;
+    background: rgba( 255,255,255, 0.7);
+    width:100%;
+    max-width:700px;
+    margin:0 70px;
+    vertical-align: top;
+    position: relative;
+}
+
+.flex-box{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    height: 450px;
+}
+.inner-grp-main{
+    align-self: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 65px;
+}
+.inner-grp-main > h2{
+font-size:28px;
+margin-bottom:30px
+}
+.input-ind{
+    width:100%;
+    margin-bottom: 25px;
+}
+.input-ind input[type="text"]{
+    width:100%;
+    font-size: 17px;
+    line-height: 35px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.input-ind input[type="text"]:focus,
+.input-ind input[type="text"]:active{
+    outline: 0;
+}
+
+.input-ind button{
+    background: #5d818c;
+    border:0;
+    color:#fff;
+    font-size: 17px;
+    line-height: 35px;
+    width: 150px;
+    transition:background 0.3s ease-in-out 0s;
+}
+.input-ind button:hover{background: #349c6c;}
+
+.or-sec{
+    position: absolute;
+    top: 50%;
+    right: -110px;
+    /* transform: translate(0,-50%); */
+    border-bottom: 1px solid #000;
+    line-height: 50px;
+    width: 75px;
+    margin-top: -47px;
+}
+.or-sec h3{
+    color:#000;
+    font-size: 25px;
+}
+
+
+/*Name Popup Css*/
+.popup-wrapper{
+    opacity: 0;
+    visibility: hidden;
+}
+.popup-wrapper.active{
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-overlay{
+    position:fixed;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.popup-wrapper.active .popup-overlay{
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-main{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 9999;
+    min-width: 750px;
+    background: #fff;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    padding: 35px 50px;
+    box-sizing: border-box;
+    opacity:0;
+}
+
+.popup-wrapper.active .popup-main{
+    opacity: 1;
+}
+
+.popup-inner{
+    width: 100%;
+    position: relative;
+}
+
+.popup-inner > h2{
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+.popup-inner{
+    text-align: center;
+}
