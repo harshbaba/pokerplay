@@ -6,6 +6,7 @@
         <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
         <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <script src="../js/config.js"></script>
         <script src="../js/underscore-min.js"></script>
         <script src="../js/socket.io.js"></script>
         <script src="../js/utils.js"></script>
@@ -22,23 +23,36 @@
         
         <script type='text/babel'>
             if(!localStorage.getItem('name')){
-                window.location.href = location.hostname;
+                window.location.href = configApp.endPoint;
             }
-            var socket = io.connect('https://poker-play.herokuapp.com/');
+            var socket = io.connect(configApp.endPoint);
             socket.on('connect', function(data) {
-               socket.emit('join', {name:localStorage.getItem('name'), groupId:localStorage.getItem('groupId')});
+               socket.emit('join', {name:localStorage.getItem('name'), groupId:$utils.setGroupId()});
             });
             var data = {
                 'pageName': 'dashboard',
-                'pageData': null
+                'users': null
             };
-            socket.on('user-connected', function(users){
+            socket.on('user-connected', function(usersData){
                 console.log('======================AAyi Update=======================');
-                 data.pageData = users;
-                 data.isAdmin = $utils.isAdmin(users);
-                 ReactDOM.render(<App data={data} />, document.getElementById('root'));
+                data.users = usersData.info.users;
+                data.isAdmin = $utils.isAdmin(usersData.info.groupInfo.adminName);
+                data.groupInfo = usersData.info.groupInfo;
+                ReactDOM.render(<App data={data} />, document.getElementById('root'));
             });
-            
+
+            window.$methods = {
+                handleAdminControls: function(key, value, type){
+                    socket.emit('adminAction', {key: key, value: value, type: type, groupId:$utils.setGroupId()});
+                }
+            }
+
+            socket.on('handleAdminControl', function(controlData){
+                console.log('================handleAdminControl client===================');
+                console.log(controlData);
+                data.groupInfo = controlData.info.groupInfo;
+                ReactDOM.render(<App data={data} />, document.getElementById('root'));
+            });
         </script>
     </body>
 </html>

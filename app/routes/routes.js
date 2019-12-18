@@ -53,7 +53,9 @@ router.post('/createGroup', function(req,res){
 			groupId: req.body.groupId,
 			adminName: req.body.userName,
 			createdAt: new Date(),
-			users:{}
+			isStartVoting: false,
+			isShowResult: false,
+			isDeclareResult: false
 		};
 		res.json({success: true, message: grpInfo.groupName +' Group Created Succesfully', groupId: grpInfo.groupName});
 	}

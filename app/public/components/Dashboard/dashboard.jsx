@@ -4,27 +4,15 @@ class Dashboard extends React.Component{
       console.log('0constructor');
       console.log(props);
       this.state = {
-        users: props.data.pageData
+        users: props.data.users
       }
     }
 
     UNSAFE_componentWillReceiveProps(props){
       console.log('recieve  props');
       console.log(props);
-      this.setState({users: props.data.pageData});
+      this.setState({users: props.data.users});
     }
-
-    // static getDerivedStateFromProps(props, state){
-    //   console.log('recieve  props');
-    //   console.log(props);
-    //   const {users} = state;
-    //   if(props.data && users && props.data.length != users.length){
-    //     return {
-    //       users: props.data
-    //     }
-    //   }
-    //   return null;
-    // }
 
     getFlipCardList = () => {
       const users = this.state.users;
@@ -49,6 +37,14 @@ class Dashboard extends React.Component{
 
       return flipCardList;
     }
+
+    doVotingAllow = (param) =>{
+      $methods.handleAdminControls('isStartVoting', param, 'Update');
+    }
+
+    doReset = (param) =>{
+      $methods.handleAdminControls('reset', param, 'Reset');
+    }
     
 
     render() {
@@ -67,11 +63,11 @@ class Dashboard extends React.Component{
                     <div className="card-list">
                       <Card cardValue="all"/>
                     </div>
-                    
-                    <div className="vote-btn-wrap">
-                      <button type="button">Vote</button>
-                    </div>
-                    
+                    {this.props.data.groupInfo.isStartVoting &&
+                      <div className="vote-btn-wrap">
+                        <button type="button">Vote</button>
+                      </div>
+                    }
                     </div>
                     
                   }
@@ -79,7 +75,7 @@ class Dashboard extends React.Component{
 
                 {this.props.data.isAdmin &&
                   <div className="admin-bar-wrap">
-                    <Admin />
+                    <Admin doVotingAllow={this.doVotingAllow} doReset={this.doReset} />
                   </div>
                 }
                 <div className="online-users-wrap">

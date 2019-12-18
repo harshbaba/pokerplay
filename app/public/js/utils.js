@@ -20,20 +20,15 @@ $utils = {
         return ((key >= 65 && key <= 90) || key == 8);
     },
     setGroupId: function(){
-        
         let url = window.location.href;
         url = url.split('/');
-        localStorage.setItem('groupId', url[4]);
-        return url[4];
+        //localStorage.setItem('groupId', url[4]);
+        return url[3];
         
     },
-    isAdmin: function(users){
-        var index = _.findIndex(users, {isAdmin: true});
-        if(index !== -1){
-            let name = users[index].name;
-            if(name == localStorage.getItem('name')){
-                return true;
-            }
+    isAdmin: function(adminName){
+        if(adminName == localStorage.getItem('name')){
+            return true;
         }
         return false;
     }

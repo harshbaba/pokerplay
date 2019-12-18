@@ -9,14 +9,12 @@ var utils = {
         }
         
     },
-    isUserExist: function(grpIndex, userId){
-        let userName = userId;
-        let groupIndex = grpIndex;
-        var index = _.findIndex($groups[groupIndex].members, {userName: userId});
+    isUserExist: function(groupId, userId){
+        var index = _.findIndex($users, {name: userId, groupId: groupId});
         if(index !== -1){
-            return {isExist: true, index: index, obj: $groups[groupIndex].members[index], userName: userName};
+            return {isExist: true, index: index};
         }else{
-            return {isExist: false, userName: userName};
+            return {isExist: false};
         }
         
     },

@@ -23,7 +23,10 @@ var mockData = {
 		Apache:{
 			groupId: 'Apache',
 			adminName: 'Harsh',
-			createdAt:''
+			createdAt:'',
+			isStartVoting: false,
+			isShowResult: false,
+			isDeclareResult: false
 		},
 		Creata:{
 			groupId: 'Creata',

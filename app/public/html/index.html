@@ -6,6 +6,7 @@
         <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
         <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
         <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+        <script src="../js/config.js"></script>
         <script src="../js/socket.io.js"></script>
         <script src="../js/utils.js"></script>
         <script type="text/babel" src="../components/App/app.jsx"></script>
@@ -17,6 +18,7 @@
     <body className="landing-page">
         <div id="root"></div>
         <script type='text/babel'>
+            console.log(configApp);
             let data = {
                 'pageName': 'landing',
                 'pageData': null

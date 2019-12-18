@@ -18,7 +18,7 @@ class Landing extends React.Component{
       if(groupId.success){
         alert('Enter Group Id');
       }else{
-        fetch('https://poker-play.herokuapp.com/createGroup/', {
+        fetch(configApp.endPoint+'/createGroup/', {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
@@ -31,8 +31,8 @@ class Landing extends React.Component{
         }).then(response => response.json())
         .then(data =>{
           console.log(data);
-          localStorage.setItem('groupId', data.groupId);
-          window.location.href = window.location.href+data.groupId;
+          
+          window.location.href = configApp.endPoint+'/'+data.groupId;
         })
         .catch(error => {
           console.log(error);
@@ -45,7 +45,7 @@ class Landing extends React.Component{
     if(groupId.success){
       alert('Enter Group Id');
     }else{
-      fetch('https://poker-play.herokuapp.com/enterGroup/', {
+      fetch(configApp.endPoint+'/enterGroup/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -59,8 +59,8 @@ class Landing extends React.Component{
       .then(data =>{
         console.log(data);
         if(data.success){
-          localStorage.setItem('groupId', data.groupId);
-          window.location.href = window.location.href+data.groupId;
+  
+          window.location.href = configApp.endPoint+'/'+data.groupId;
         }
       })
       .catch(error => {

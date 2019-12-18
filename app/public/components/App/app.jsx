@@ -1,6 +1,7 @@
 class App extends React.Component{
     constructor(props){
       super(props);
+      console.log('=================App.jsx constructor===========');
       console.log(props.data);
     }
 
