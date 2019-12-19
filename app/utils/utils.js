@@ -29,8 +29,14 @@ var utils = {
         return finalUsers;
     },
     getDisconnectedUserDetails: function(socketId){
-        let index = _.findIndex($users, {socketId: socketId});
-        return index;
+        for(let rootIndex = 0; rootIndex< $users.length; rootIndex++){
+            let item = $users[rootIndex];
+            let instanceIndex = item.instances.indexOf(socketId);
+            if(instanceIndex != -1){
+                return {rootIndex: rootIndex, instanceslength: item.instances.length, instanceIndex: instanceIndex}
+            }
+        }
+        return {rootIndex: -1}
     }
 }
 

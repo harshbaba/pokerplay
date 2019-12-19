@@ -4,11 +4,13 @@ class Card extends React.Component{
     }
     render(){
         let cardValue = this.props.cardValue;
-
+        let isVoteDone = this.props.isVoteDone;
         return <React.Fragment>
         {(cardValue == '1' || cardValue == 'all') &&
             <div class="card-in-wrapper">
+                {!isVoteDone &&
                 <input type="radio" name="card-check" value="1"  className="card-checkbox" />
+                }
                 <section class="card card--spade" value="1">
                     <div class="card__inner card__inner--centered">
                     
@@ -22,7 +24,9 @@ class Card extends React.Component{
         }
         {(cardValue == '2' || cardValue == 'all') &&
             <div class="card-in-wrapper">
+            {!isVoteDone &&
             <input type="radio" name="card-check" value="2"  className="card-checkbox" />
+            }
             <section class="card card--spade" value="2">
                 <div class="card__inner card__inner--centered">
                 <div class="card__column">
@@ -36,7 +40,9 @@ class Card extends React.Component{
 
         {(cardValue == '3' || cardValue == 'all') &&
             <div class="card-in-wrapper">
+                {!isVoteDone &&
                 <input type="radio" name="card-check" value="3"  className="card-checkbox" />
+                }
                 <section class="card card--spade" value="3">
                 <div class="card__inner card__inner--centered">
                 <div class="card__column">
@@ -51,7 +57,9 @@ class Card extends React.Component{
 
         {(cardValue == '4' || cardValue == 'all') &&
         <div class="card-in-wrapper">
+            {!isVoteDone &&
             <input type="radio" name="card-check" value="4"  className="card-checkbox" />
+            }
             <section class="card card--spade" value="4">
             <div class="card__inner">
             <div class="card__column">
@@ -69,7 +77,9 @@ class Card extends React.Component{
 
         {(cardValue == '5' || cardValue == 'all') &&
         <div class="card-in-wrapper">
+            {!isVoteDone &&
             <input type="radio" name="card-check" value="5"  className="card-checkbox" />
+            }
             <section class="card card--spade" value="5">
                 <div class="card__inner">
                 <div class="card__column">
@@ -90,7 +100,9 @@ class Card extends React.Component{
 
         {(cardValue == '6' || cardValue == 'all') &&
         <div class="card-in-wrapper">
-            <input type="radio" name="card-check" value="6"  className="card-checkbox" />
+            {!isVoteDone &&
+                <input type="radio" name="card-check" value="6"  className="card-checkbox" />
+            }
             <section class="card card--spade" value="6">
             <div class="card__inner">
             <div class="card__column">
@@ -110,7 +122,9 @@ class Card extends React.Component{
 
         {(cardValue == '7' || cardValue == 'all') &&
         <div class="card-in-wrapper">
+        {!isVoteDone &&
         <input type="radio" name="card-check" value="7"  className="card-checkbox" />
+        }
         <section class="card card--spade" value="7">
         <div class="card__inner">
         <div class="card__column">
@@ -133,7 +147,9 @@ class Card extends React.Component{
 
         {(cardValue == '8' || cardValue == 'all') &&
         <div class="card-in-wrapper">
+        {!isVoteDone &&
         <input type="radio" name="card-check" value="8"  className="card-checkbox" />
+        }
         <section class="card card--spade" value="8">
         <div class="card__inner">
         <div class="card__column">
@@ -157,7 +173,9 @@ class Card extends React.Component{
 
         {(cardValue == '9' || cardValue == 'all') &&
         <div class="card-in-wrapper">
+        {!isVoteDone &&
         <input type="radio" name="card-check" value="9"  className="card-checkbox" />
+        }
         <section class="card card--spade" value="9">
         <div class="card__inner">
         <div class="card__column">
@@ -182,7 +200,9 @@ class Card extends React.Component{
 
         {(cardValue == '10' || cardValue == 'all') &&
         <div class="card-in-wrapper">
+        {!isVoteDone &&
         <input type="radio" name="card-check" value="10"  className="card-checkbox" />
+        }
         <section class="card card--spade" value="10">
         <div class="card__inner">
         <div class="card__column">

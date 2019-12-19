@@ -44,13 +44,15 @@ dashboardIns.on('connection', function(client) {
 
         if(data && data.groupId && data.name && $groups[data.groupId]){
             let obj = {
-                socketId    : client.id,
                 name        : data.name,
-                groupId     : data.groupId   
+                groupId     : data.groupId,
+                instances   : [client.id]   
             }
             let isUser = utils.isUserExist(data.groupId, data.name);
             if(!isUser.isExist){
                 $users.push(obj);
+            }else{
+                $users[isUser.index].instances.push(client.id);
             }
             console.log('===============Users Inside Join=========');
             console.log($users);
@@ -60,12 +62,16 @@ dashboardIns.on('connection', function(client) {
     
     client.on('disconnect', function () {
         console.log('============disconnect============'+ client.id);
-        let index = utils.getDisconnectedUserDetails(client.id);
-        if(index != -1){
-            let info = $users[index];
-            $users.splice(index, 1);
+        let disconnectedInfo = utils.getDisconnectedUserDetails(client.id);
+        if(disconnectedInfo.rootIndex != -1){
+            let info =  $users[disconnectedInfo.rootIndex];
+            if(disconnectedInfo.instanceslength == 1){
+                $users.splice(disconnectedInfo.rootIndex, 1);
+            }else{
+                $users[disconnectedInfo.rootIndex].instances.splice(disconnectedInfo.instanceIndex, 1);
+            }
+            
             console.log('===========info inside disconnect===========');
-            console.log(info);
             io.in(info.groupId).emit('user-connected', {info: {users: utils.createListOfUsers(info.groupId), groupInfo: $groups[info.groupId]}});
         }
     });
@@ -74,15 +80,26 @@ dashboardIns.on('connection', function(client) {
         console.log('==============Admin Action===================');
         console.log(data);
         if(data.type == "Reset"){
-            $groups[data.groupId].isStartVoting = false;
-			$groups[data.groupId].isShowResult = false;
-			$groups[data.groupId].isDeclareResult = false;
+            $groups[data.groupId].votingStatus = "NOT STARTED";
         }
         if(data.type == "Update"){
             $groups[data.groupId][data.key] = data.value;
         }
-        io.in(data.groupId).emit('handleAdminControl', {info: {groupInfo: $groups[data.groupId]}});
-    })
+        //io.in(data.groupId).emit('handleAdminControl', {info: {groupInfo: $groups[data.groupId]}});
+        io.in(data.groupId).emit('user-connected', {info: {users: utils.createListOfUsers(data.groupId), groupInfo: $groups[data.groupId]}});
+    });
+
+    client.on('registerVote', function(data){
+        console.log(data);
+        let isUser = utils.isUserExist(data.groupId, data.name);
+        if(isUser.isExist){
+            $users[isUser.index].vote = data.vote;
+        }
+        console.log($users[isUser.index]);
+        io.in(data.groupId).emit('user-connected', {info: {users: utils.createListOfUsers(data.groupId), groupInfo: $groups[data.groupId]}});
+    });
+
+
 });
 
 

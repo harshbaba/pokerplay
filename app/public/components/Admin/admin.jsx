@@ -4,15 +4,24 @@ class Admin extends React.Component{
         console.log(props);
     }
 
-    passVotingAllow = () =>{
-        this.props.doVotingAllow(true);
+    startVoting = () =>{
+        this.props.updateVotingStatus('USER VOTING IN PROGRESS');
         setTimeout(() => {
-            this.props.doVotingAllow(false);
-        }, 45000);
+            this.props.updateVotingStatus('ADMIN VOTING IN PROGRESS');
+
+            setTimeout(() => {
+                this.props.updateVotingStatus('VOTING DONE');
+            }, 30000);
+
+        }, 30000);
     }
 
     passReset = () => {
-        this.props.doReset(true);
+        this.props.doReset('NOT STARTED');
+    }
+
+    passDeclareResult = () =>{
+        this.props.declareResult('RESULT DECLARED');
     }
 
     render(){
@@ -25,13 +34,10 @@ class Admin extends React.Component{
                 <ul className="control-list">
                     <li>
                         <div className="control-list-ind">
-                            <button type="button" onClick={this.passVotingAllow}>Start Voting</button>
+                            <button type="button" onClick={this.startVoting}>Start Voting</button>
                         </div>
                         <div className="control-list-ind">
-                            <button type="button">Show Result</button>
-                        </div>
-                        <div className="control-list-ind">
-                            <button type="button">Declare Result</button>
+                            <button type="button" onClick={this.passDeclareResult}>Declare Result</button>
                         </div>
                         <div className="control-list-ind">
                             <button type="button" onClick={this.passReset} >Reset</button>

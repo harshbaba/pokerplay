@@ -142,7 +142,7 @@ body.dashboard-page .full-page{
     overflow: hidden;
     max-height: 100%;
     box-sizing: border-box;
-    padding-right: 370px;
+    padding-right: 270px;
     padding-top: 15px;
     padding-left:15px;
 }
@@ -154,7 +154,7 @@ body.dashboard-page .full-page{
     position: absolute;
     right: 0;
     top: 0;
-    width: 350px;
+    width: 250px;
     /* max-height: calc(100% - 82px); */
     /* border-left: 1px solid #ecedf1; */
     height: 100%;
@@ -318,6 +318,14 @@ body.dashboard-page .full-page{
 	height: 45px;
 	color: #fff;
 	border-radius: 3px;
+}
+
+.user-info-ind{
+    margin:10px 0 0;
+    text-align: center;
+}
+.user-info-ind p{
+    font-size: 20px;
 }
 
 

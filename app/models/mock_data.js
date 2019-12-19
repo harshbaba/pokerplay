@@ -24,56 +24,57 @@ var mockData = {
 			groupId: 'Apache',
 			adminName: 'Harsh',
 			createdAt:'',
-			isStartVoting: false,
-			isShowResult: false,
-			isDeclareResult: false
+			votingStatus:"NOT STARTED || USER VOTING IN PROGRESS || ADMIN VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
 		},
 		Creata:{
 			groupId: 'Creata',
 			adminName: 'Ankush',
-			createdAt:''
+			createdAt:'',
+			votingStatus:"NOT STARTED || USER VOTING IN PROGRESS || ADMIN VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
 		},
 		Js:{
 			groupId: 'Js',
 			adminName: 'Harsh',
-			createdAt:''
+			createdAt:'',
+			votingStatus:"NOT STARTED || USER VOTING IN PROGRESS || ADMIN VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
 		}
 	},
 
 	newUsersData:[
 		{
-			socketId:'abc12',
 			name: 'Harsh',
-			groupId:'Apache'
+			groupId:'Apache',
+			instances:['abc12', 'abc1234', 'abc12345']
 		},
 		{
-			socketId:'abc1234',
-			name: 'Harsh',
-			groupId:'Apache'
-		},
-		{
-			socketId:'abc12345',
-			name: 'Harsh',
-			groupId:'Apache'
-		},
-		{
-			socketId:'xy123',
 			name: 'Ankush',
-			groupId:'Apache'
+			groupId:'Apache',
+			instances:['xy123']
 		},
 		{
-			socketId:'xy1234',
+			name: 'Harsh',
+			groupId:'Creata',
+			instances:['xyz123', 'xyz1234', 'xyz12345']
+		},
+		{
 			name: 'Ankush',
-			groupId:'Creata'
+			groupId:'Creata',
+			instances: ['xy1234']
 		},
 		{
-			socketId:'xy12345',
 			name: 'Rahul',
-			groupId:'Apache'
+			groupId:'Apache',
+			instances: ['xy12345']
 		}
 	]
 }
-
+// for(let i = 0; i< arr.length; i++){
+// 	let item = arr[i];
+// 	console.log(i);
+// 	if(item.instances.indexOf(instaceId) != -1){
+// 		return {rootIndex: i, instanceslength: item.instances.length}
+// 	}
+// }
 // var usersArr = _.filter(users, function(item) {
 // 	return item.groupId == 'Apache'
 // });

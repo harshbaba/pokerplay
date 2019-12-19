@@ -44,15 +44,18 @@
             window.$methods = {
                 handleAdminControls: function(key, value, type){
                     socket.emit('adminAction', {key: key, value: value, type: type, groupId:$utils.setGroupId()});
+                },
+                doVote: function(vote){
+                    socket.emit('registerVote', {vote: vote, name:localStorage.getItem('name'), groupId:$utils.setGroupId()});
                 }
             }
 
-            socket.on('handleAdminControl', function(controlData){
-                console.log('================handleAdminControl client===================');
-                console.log(controlData);
-                data.groupInfo = controlData.info.groupInfo;
-                ReactDOM.render(<App data={data} />, document.getElementById('root'));
-            });
+            // socket.on('handleAdminControl', function(controlData){
+            //     console.log('================handleAdminControl client===================');
+            //     console.log(controlData);
+            //     data.groupInfo = controlData.info.groupInfo;
+            //     ReactDOM.render(<App data={data} />, document.getElementById('root'));
+            // });
         </script>
     </body>
 </html>

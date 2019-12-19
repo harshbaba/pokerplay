@@ -4,7 +4,9 @@ class Dashboard extends React.Component{
       console.log('0constructor');
       console.log(props);
       this.state = {
-        users: props.data.users
+        users: props.data.users,
+        isVoteDone: false,
+        isDeclareResult: false 
       }
     }
 
@@ -18,7 +20,8 @@ class Dashboard extends React.Component{
       const users = this.state.users;
       const flipCardList = users.map((user) =>
         
-          <div class="flip-card">
+          
+          <div className={"flip-card " + (this.state.isDeclareResult ? 'active ' : '')}>
           <div class="flip-card-inner">
             <div class="flip-card-front">
               &nbsp;
@@ -27,23 +30,38 @@ class Dashboard extends React.Component{
             <div class="flip-card-back">
               <Card cardValue={user.vote}/>
             </div>
-            <div>
-            
-            </div>
           </div>
+          <div class="user-info-ind">
+              <p>({user.name})</p>
+            </div>
         </div>
-        );
+      );
       
-
       return flipCardList;
     }
 
-    doVotingAllow = (param) =>{
-      $methods.handleAdminControls('isStartVoting', param, 'Update');
+    updateVotingStatus = (param) =>{
+      $methods.handleAdminControls('votingStatus', param, 'Update');
     }
 
     doReset = (param) =>{
-      $methods.handleAdminControls('reset', param, 'Reset');
+      $methods.handleAdminControls('votingStatus', param, 'Reset');
+    }
+
+    doVote = () =>{
+      let checkedCardEle = document.querySelector('.card-checkbox:checked');
+      if(checkedCardEle == null){
+        alert('please select a card');
+      }else{
+        let checkedValue = parseInt(checkedCardEle.value);
+        $methods.doVote(checkedValue);
+        this.setState({isVoteDone: true});
+      }
+    }
+
+    doDeclareResult = (param) =>{
+      this.setState({isDeclareResult: true});
+      $methods.handleAdminControls('votingStatus', param, 'Update');
     }
     
 
@@ -61,11 +79,11 @@ class Dashboard extends React.Component{
                   {!this.props.data.isAdmin &&
                     <div class="card-list-outer">
                     <div className="card-list">
-                      <Card cardValue="all"/>
+                      <Card cardValue="all" isVoteDone={this.state.isVoteDone} />
                     </div>
-                    {this.props.data.groupInfo.isStartVoting &&
+                    {this.props.data.groupInfo.votingStatus == "USER VOTING IN PROGRESS" && !this.state.isVoteDone &&
                       <div className="vote-btn-wrap">
-                        <button type="button">Vote</button>
+                        <button type="button" onClick={this.doVote} id="do-vote-btn">Vote</button>
                       </div>
                     }
                     </div>
@@ -75,7 +93,7 @@ class Dashboard extends React.Component{
 
                 {this.props.data.isAdmin &&
                   <div className="admin-bar-wrap">
-                    <Admin doVotingAllow={this.doVotingAllow} doReset={this.doReset} />
+                    <Admin updateVotingStatus={this.updateVotingStatus} doReset={this.doReset} declareResult={this.doDeclareResult}/>
                   </div>
                 }
                 <div className="online-users-wrap">

@@ -1,7 +1,4 @@
 
-  .cards {
-    
-  }
   .card {
     position: relative;
     display: inline-block;
@@ -136,9 +133,9 @@
     box-sizing: border-box;
   }
 
-  .flip-card:hover .flip-card-inner {
+  /* .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-  }
+  } */
   .flip-card.active .flip-card-inner {
     transform: rotateY(180deg);
   }
