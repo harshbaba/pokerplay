@@ -127,7 +127,7 @@ class Dashboard extends React.Component{
                   {!this.props.data.isAdmin && this.props.data.groupInfo.votingStatus == "VOTING IN PROGRESS" && this.state.isVoteDone &&
 
                     <div class="user-update-box">
-                        <h3><span>Your Wait has been stored with us.</span>Stay active at this page, once admin will declare result, result will be load here.</h3>
+                        <h3><span>Your Vote has been stored with us.</span>Stay active at this page, once admin will declare result, result will be load here.</h3>
                         <h4>#KeepCalmAndWaitForResult</h4>
                         <h4>#AchheDinAayenge</h4>
                       </div>
