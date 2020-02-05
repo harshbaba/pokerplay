@@ -3,6 +3,14 @@ class Dashboard extends React.Component{
       super(props);
       console.log('0constructor');
       console.log(props);
+      if(props.data.groupInfo.votingStatus == "VOTING DONE"){
+          this.setState({isVoteDone:false});
+      }
+      if(props.data.groupInfo.votingStatus == "NOT STARTED"){
+        this.setState({isDeclareResult:false});
+      }
+      
+      
       this.state = {
         users: props.data.users,
         isVoteDone: false,
@@ -14,6 +22,14 @@ class Dashboard extends React.Component{
       console.log('recieve  props');
       console.log(props);
       this.setState({users: props.data.users});
+      if(props.data.groupInfo.votingStatus == "VOTING DONE"){
+          this.setState({isVoteDone:false});
+      }
+
+      if(props.data.groupInfo.votingStatus == "NOT STARTED"){
+        this.setState({isDeclareResult:false});
+      }
+      
     }
 
     getFlipCardList = () => {
@@ -26,7 +42,10 @@ class Dashboard extends React.Component{
             <div class="flip-card-front">
               &nbsp;
             </div>
-
+            {user.isVoteDone &&
+              <div class="vote-done-mark">
+              </div>
+            }
             <div class="flip-card-back">
               <Card cardValue={user.vote}/>
             </div>
@@ -64,36 +83,77 @@ class Dashboard extends React.Component{
       $methods.handleAdminControls('votingStatus', param, 'Update');
     }
     
+    
 
     render() {
       const users = this.state.users;
       return <React.Fragment>
               <div className={"main dashboard-main " + (this.props.data.isAdmin ? 'admin ' : 'user')}>
                 <div className="main-col">
+                  <div className={"header-status-bar " + (this.props.data.groupInfo.votingStatus ==  "VOTING IN PROGRESS" ? 'active' : 'user')}>
+                    <h3 class="status-msg"><marquee>Voting In Progress</marquee></h3>
+                  </div>
+
                   {this.props.data.isAdmin &&
                     <div className="card-list-box">
                       { users ? this.getFlipCardList() : ''}
                     </div>
                   }
 
-                  {!this.props.data.isAdmin &&
+                  {!this.props.data.isAdmin && this.props.data.groupInfo.votingStatus == "NOT STARTED" &&
+                    
+                      <div class="user-update-box">
+                        <h3><span>Voting has not started.</span>Stay active at this page, once admin will open voting then here you will see voting options.</h3>
+                        <h4>#KeepCalmAndWaitToVote</h4>
+                      </div>
+
+                  }
+
+                  {!this.props.data.isAdmin && this.props.data.groupInfo.votingStatus == "VOTING IN PROGRESS" && !this.state.isVoteDone &&
+                    
                     <div class="card-list-outer">
                     <div className="card-list">
                       <Card cardValue="all" isVoteDone={this.state.isVoteDone} />
                     </div>
-                    {this.props.data.groupInfo.votingStatus == "USER VOTING IN PROGRESS" && !this.state.isVoteDone &&
+                    
                       <div className="vote-btn-wrap">
                         <button type="button" onClick={this.doVote} id="do-vote-btn">Vote</button>
                       </div>
-                    }
+                    
                     </div>
                     
+                  }
+
+                  {!this.props.data.isAdmin && this.props.data.groupInfo.votingStatus == "VOTING IN PROGRESS" && this.state.isVoteDone &&
+
+                    <div class="user-update-box">
+                        <h3><span>Your Wait has been stored with us.</span>Stay active at this page, once admin will declare result, result will be load here.</h3>
+                        <h4>#KeepCalmAndWaitForResult</h4>
+                        <h4>#AchheDinAayenge</h4>
+                      </div>
+                  }
+
+                  {!this.props.data.isAdmin && this.props.data.groupInfo.votingStatus == "VOTING DONE" &&
+
+                    <div class="user-update-box">
+                        <h3><span>Voting has been closed.</span>Stay active at this page, once admin will declare result, result will be load here.</h3>
+                        <h4>#KeepCalmAndWaitForResult</h4>
+                        <h4>#AchheDinAayenge</h4>
+                      </div>
+                  }
+
+                  {!this.props.data.isAdmin && this.props.data.groupInfo.votingStatus == "RESULT DECLARED" &&
+
+                    <div class="user-update-box">
+                        <h3><span>Result has been declared!</span></h3>
+                        <h4>#KyaAchheDinAaGaye</h4>
+                      </div>
                   }
                 </div>
 
                 {this.props.data.isAdmin &&
                   <div className="admin-bar-wrap">
-                    <Admin updateVotingStatus={this.updateVotingStatus} doReset={this.doReset} declareResult={this.doDeclareResult}/>
+                    <Admin updateVotingStatus={this.updateVotingStatus} doReset={this.doReset} declareResult={this.doDeclareResult} data={this.props.data}/>
                   </div>
                 }
                 <div className="online-users-wrap">

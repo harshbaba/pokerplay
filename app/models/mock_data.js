@@ -4,39 +4,25 @@ var mockData = {
 		"username": "Harsh"
 	},
 	"test":["harsh","jack"],
-	"groups":[{
-		groupId: 'apache',
-		adminName: 'harsh',
-		createdAt: new Date(),
-		members:[{
-			userName:'harsh',
-			isAdmin: true,
-			instances: 0
-		},
-		{
-			userName:'ankush',
-			isAdmin: false,
-		}]
-	}],
 
 	newGroupData:{
 		Apache:{
 			groupId: 'Apache',
 			adminName: 'Harsh',
 			createdAt:'',
-			votingStatus:"NOT STARTED || USER VOTING IN PROGRESS || ADMIN VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
+			votingStatus:"NOT STARTED || VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
 		},
 		Creata:{
 			groupId: 'Creata',
 			adminName: 'Ankush',
 			createdAt:'',
-			votingStatus:"NOT STARTED || USER VOTING IN PROGRESS || ADMIN VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
+			votingStatus:"NOT STARTED || VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
 		},
 		Js:{
 			groupId: 'Js',
 			adminName: 'Harsh',
 			createdAt:'',
-			votingStatus:"NOT STARTED || USER VOTING IN PROGRESS || ADMIN VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
+			votingStatus:"NOT STARTED || VOTING IN PROGRESS || VOTING DONE || RESULT DECLARED"
 		}
 	},
 
@@ -44,27 +30,37 @@ var mockData = {
 		{
 			name: 'Harsh',
 			groupId:'Apache',
-			instances:['abc12', 'abc1234', 'abc12345']
+			instances:['abc12', 'abc1234', 'abc12345'],
+			vote: 0,
+			isVoteDone: false
 		},
 		{
 			name: 'Ankush',
 			groupId:'Apache',
-			instances:['xy123']
+			instances:['xy123'],
+			vote: 0,
+			isVoteDone: false
 		},
 		{
 			name: 'Harsh',
 			groupId:'Creata',
-			instances:['xyz123', 'xyz1234', 'xyz12345']
+			instances:['xyz123', 'xyz1234', 'xyz12345'],
+			vote: 0,
+			isVoteDone: false
 		},
 		{
 			name: 'Ankush',
 			groupId:'Creata',
-			instances: ['xy1234']
+			instances: ['xy1234'],
+			vote: 0,
+			isVoteDone: false
 		},
 		{
 			name: 'Rahul',
 			groupId:'Apache',
-			instances: ['xy12345']
+			instances: ['xy12345'],
+			vote: 0,
+			isVoteDone: false
 		}
 	]
 }

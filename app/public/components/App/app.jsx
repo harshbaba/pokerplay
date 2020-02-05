@@ -12,7 +12,7 @@ class App extends React.Component{
     render() {
 
       return <div className="full-page">
-            <Header />
+            <Header data={this.props.data} />
             {this.props.data.pageName == "dashboard" &&
               <Dashboard data={this.props.data} />
             }

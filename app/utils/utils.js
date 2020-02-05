@@ -37,6 +37,15 @@ var utils = {
             }
         }
         return {rootIndex: -1}
+    },
+    resetVoteOfUsers: function(users){
+        let updatedUserData = users.map((item) =>{
+            item.vote = 0;
+            item.isVoteDone = false;
+            return item;
+        });
+
+        return updatedUserData;
     }
 }
 

@@ -54,26 +54,7 @@ class Card extends React.Component{
                 </section>
             </div>
         }
-
-        {(cardValue == '4' || cardValue == 'all') &&
-        <div class="card-in-wrapper">
-            {!isVoteDone &&
-            <input type="radio" name="card-check" value="4"  className="card-checkbox" />
-            }
-            <section class="card card--spade" value="4">
-            <div class="card__inner">
-            <div class="card__column">
-            <div class="card__symbol"></div>
-            <div class="card__symbol"></div>
-            </div>
-            <div class="card__column">
-            <div class="card__symbol"></div>
-            <div class="card__symbol"></div>
-            </div>
-            </div>
-            </section>
-        </div>
-        }
+        
 
         {(cardValue == '5' || cardValue == 'all') &&
         <div class="card-in-wrapper">
@@ -98,52 +79,9 @@ class Card extends React.Component{
         </div>
         }
 
-        {(cardValue == '6' || cardValue == 'all') &&
-        <div class="card-in-wrapper">
-            {!isVoteDone &&
-                <input type="radio" name="card-check" value="6"  className="card-checkbox" />
-            }
-            <section class="card card--spade" value="6">
-            <div class="card__inner">
-            <div class="card__column">
-            <div class="card__symbol"></div>
-            <div class="card__symbol"></div>
-            <div class="card__symbol"></div>
-            </div>
-            <div class="card__column">
-            <div class="card__symbol"></div>
-            <div class="card__symbol"></div>
-            <div class="card__symbol"></div>
-            </div>
-            </div>
-            </section>
-        </div>
-        }
+        
 
-        {(cardValue == '7' || cardValue == 'all') &&
-        <div class="card-in-wrapper">
-        {!isVoteDone &&
-        <input type="radio" name="card-check" value="7"  className="card-checkbox" />
-        }
-        <section class="card card--spade" value="7">
-        <div class="card__inner">
-        <div class="card__column">
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        </div>
-        <div class="card__column card__column--centered">
-        <div class="card__symbol card__symbol--huge"></div>
-        </div>
-        <div class="card__column">
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        </div>
-        </div>
-        </section>
-        </div>
-        }
+        
 
         {(cardValue == '8' || cardValue == 'all') &&
         <div class="card-in-wrapper">
@@ -171,62 +109,14 @@ class Card extends React.Component{
         </div>
         }
 
-        {(cardValue == '9' || cardValue == 'all') &&
-        <div class="card-in-wrapper">
-        {!isVoteDone &&
-        <input type="radio" name="card-check" value="9"  className="card-checkbox" />
-        }
-        <section class="card card--spade" value="9">
-        <div class="card__inner">
-        <div class="card__column">
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        <div class="card__symbol card__symbol--rotated"></div>
-        <div class="card__symbol"></div>
-        </div>
-        <div class="card__column card__column--centered">
-        <div class="card__symbol card__symbol"></div>
-        </div>
-        <div class="card__column">
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        <div class="card__symbol card__symbol--rotated"></div>
-        <div class="card__symbol"></div>
-        </div>
-        </div>
-        </section>
-        </div>
-        }
-
-        {(cardValue == '10' || cardValue == 'all') &&
-        <div class="card-in-wrapper">
-        {!isVoteDone &&
-        <input type="radio" name="card-check" value="10"  className="card-checkbox" />
-        }
-        <section class="card card--spade" value="10">
-        <div class="card__inner">
-        <div class="card__column">
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        <div class="card__symbol card__symbol--rotated"></div>
-        <div class="card__symbol"></div>
-        </div>
-        <div class="card__column card__column--centered">
-        <div class="card__symbol card__symbol--big"></div>
-        <div class="card__symbol card__symbol--big"></div>
-        </div>
-        <div class="card__column">
-        <div class="card__symbol"></div>
-        <div class="card__symbol"></div>
-        <div class="card__symbol card__symbol--rotated"></div>
-        <div class="card__symbol"></div>
-        </div>
-        </div>
-        </section>
-        </div>
-        }
 
         {cardValue == undefined &&
+            <div className="joker_card">
+                &nbsp;
+            </div>
+        }
+
+        {cardValue == 0 &&
             <div className="joker_card">
                 &nbsp;
             </div>

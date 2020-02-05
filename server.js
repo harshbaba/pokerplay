@@ -46,7 +46,9 @@ dashboardIns.on('connection', function(client) {
             let obj = {
                 name        : data.name,
                 groupId     : data.groupId,
-                instances   : [client.id]   
+                instances   : [client.id],
+                vote        : 0,
+			    isVoteDone  : false   
             }
             let isUser = utils.isUserExist(data.groupId, data.name);
             if(!isUser.isExist){
@@ -79,20 +81,29 @@ dashboardIns.on('connection', function(client) {
     client.on('adminAction', function(data){
         console.log('==============Admin Action===================');
         console.log(data);
+        let users = [];
+        let set = "";
         if(data.type == "Reset"){
             $groups[data.groupId].votingStatus = "NOT STARTED";
+            //do reset vote for every user of this group
+            users = utils.createListOfUsers(data.groupId);
+            users = utils.resetVoteOfUsers(users);
         }
         if(data.type == "Update"){
+            if(data.value == "VOTING IN PROGRESS"){}
+
             $groups[data.groupId][data.key] = data.value;
+            users = utils.createListOfUsers(data.groupId);            
         }
-        //io.in(data.groupId).emit('handleAdminControl', {info: {groupInfo: $groups[data.groupId]}});
-        io.in(data.groupId).emit('user-connected', {info: {users: utils.createListOfUsers(data.groupId), groupInfo: $groups[data.groupId]}});
+        
+        io.in(data.groupId).emit('user-connected', {info: {users: users, groupInfo: $groups[data.groupId]}});
     });
 
     client.on('registerVote', function(data){
         console.log(data);
         let isUser = utils.isUserExist(data.groupId, data.name);
         if(isUser.isExist){
+            $users[isUser.index].isVoteDone = true;
             $users[isUser.index].vote = data.vote;
         }
         console.log($users[isUser.index]);

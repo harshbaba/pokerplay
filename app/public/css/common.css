@@ -103,10 +103,40 @@ h2{
 	background: #fff;
 	box-shadow: 1px 1px 3px 3px #ecedf1;
 }
-
+.main-header{
+    float:left;
+    width:100%;
+}
 .layout-header h2, .layout-footer h2{
 	float: left;
 }
+
+.header-status-bar{
+    position:fixed;
+    top:-75px;
+    left:0;
+    width:100%;
+    padding: 10px 15px;
+    z-index: 999;
+    background: #fff;
+    box-sizing: border-box;
+	box-shadow: 1px 1px 3px 3px #ecedf1;
+}
+
+.header-status-bar.active{
+    top:0;
+}
+.header-status-bar > h3{
+    font-size:24px;
+    font-weight:bold;
+    line-height:36px;
+}
+.header-status-bar > p{
+    float:right;
+    font-size:34px;
+    line-height:36px;
+}
+
 
 .layout-footer{
     position: absolute;
@@ -328,6 +358,28 @@ body.dashboard-page .full-page{
     font-size: 20px;
 }
 
+.user-update-box{
+	float:left;
+	width:100%;
+	text-align: center;
+}
+.user-update-box > h3{
+	font-size: 22px;
+	line-height: 32px;
+}
+.user-update-box > h3 > span{
+	display:block;
+	font-size: 34px;
+	font-weight: bold;
+	line-height: 55px;
+    color:#376144;
+}
+.user-update-box > h4{
+	font-size:20px;
+	line-height:34px;
+    font-weight:bold;
+    font-style:italic;
+}
 
 @media (max-width:1199px){
     .dashboard-main{

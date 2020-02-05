@@ -5,23 +5,23 @@ class Admin extends React.Component{
     }
 
     startVoting = () =>{
-        this.props.updateVotingStatus('USER VOTING IN PROGRESS');
+        this.props.updateVotingStatus('VOTING IN PROGRESS');
+        
         setTimeout(() => {
-            this.props.updateVotingStatus('ADMIN VOTING IN PROGRESS');
-
-            setTimeout(() => {
+            if(this.props.data.groupInfo.votingStatus != "NOT STARTED"){
                 this.props.updateVotingStatus('VOTING DONE');
-            }, 30000);
-
-        }, 30000);
+            }
+        }, 45000);
     }
 
     passReset = () => {
         this.props.doReset('NOT STARTED');
+        
     }
 
     passDeclareResult = () =>{
         this.props.declareResult('RESULT DECLARED');
+        
     }
 
     render(){
@@ -34,14 +34,37 @@ class Admin extends React.Component{
                 <ul className="control-list">
                     <li>
                         <div className="control-list-ind">
-                            <button type="button" onClick={this.startVoting}>Start Voting</button>
+                                <button type="button" onClick={this.startVoting}>Start Voting</button>
                         </div>
                         <div className="control-list-ind">
-                            <button type="button" onClick={this.passDeclareResult}>Declare Result</button>
+                                <button type="button" onClick={this.passDeclareResult}>Declare Result</button>
                         </div>
                         <div className="control-list-ind">
-                            <button type="button" onClick={this.passReset} >Reset</button>
-                        </div>
+                                <button type="button" onClick={this.passReset}>Reset</button>
+                            </div>
+                        {/*
+                        {this.props.data.groupInfo.votingStatus == "NOT STARTED" && !this.state.isStartVoting &&
+                            <div className="control-list-ind">
+                                <button type="button" onClick={this.startVoting}>Start Voting</button>
+                            </div>
+                        }
+                        {this.props.data.groupInfo.votingStatus == "VOTING IN PROGRESS" 
+                            <div className="control-list-ind">
+                                <button type="button" onClick={this.passReset} >Stop Voting</button>
+                            </div>
+                        }
+                        {this.props.data.groupInfo.votingStatus == "VOTING DONE" &&
+                            <div className="control-list-ind">
+                                <button type="button" onClick={this.passDeclareResult}>Declare Result</button>
+                            </div>
+                            
+                        }
+                        {this.props.data.groupInfo.votingStatus == "VOTING DONE" || this.props.data.groupInfo.votingStatus == "RESULT DECLARED" &&
+                        <div className="control-list-ind">
+                                <button type="button" onClick={this.passReset}>Reset</button>
+                            </div>
+                        }
+                        */}
                     </li>
                 </ul>
             </div>
