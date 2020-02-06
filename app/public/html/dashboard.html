@@ -39,6 +39,7 @@
                 data.users = usersData.info.users;
                 data.isAdmin = $utils.isAdmin(usersData.info.groupInfo.adminName);
                 data.groupInfo = usersData.info.groupInfo;
+
                 ReactDOM.render(<App data={data} />, document.getElementById('root'));
             });
 
@@ -50,13 +51,7 @@
                     socket.emit('registerVote', {vote: vote, name:localStorage.getItem('name'), groupId:$utils.setGroupId()});
                 }
             }
-
-            // socket.on('handleAdminControl', function(controlData){
-            //     console.log('================handleAdminControl client===================');
-            //     console.log(controlData);
-            //     data.groupInfo = controlData.info.groupInfo;
-            //     ReactDOM.render(<App data={data} />, document.getElementById('root'));
-            // });
+            
         </script>
     </body>
 </html>

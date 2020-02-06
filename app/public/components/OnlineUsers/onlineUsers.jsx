@@ -15,7 +15,9 @@ class OnlineUsers extends React.Component{
     }
 
     getUserlist = () => {
-        const users = this.state.onlineUsers;
+        let users = this.state.onlineUsers;
+        if(!users) return;
+        users = _.sortBy(users, 'name');
         const usersList = users.map((user) =>
             <li>
                 <div className="online-user-ind">
@@ -25,9 +27,15 @@ class OnlineUsers extends React.Component{
         );
         return usersList;
     }
+
+    getOnlineusersCount = (users) =>{
+        if(!users) return "0";
+        return users.length;
+    }
+
     render() {
       return <div className="online-user-main">
-                <h3>Online Users ({this.state.onlineUsers.length})</h3>
+                <h3>Online Users ({this.getOnlineusersCount(this.state.onlineUsers)})</h3>
                 <ul className="user-list">
                     {this.getUserlist()}
                 </ul>

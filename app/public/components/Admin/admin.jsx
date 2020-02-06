@@ -8,7 +8,7 @@ class Admin extends React.Component{
         this.props.updateVotingStatus('VOTING IN PROGRESS');
         
         setTimeout(() => {
-            if(this.props.data.groupInfo.votingStatus != "NOT STARTED"){
+            if(this.props.data.groupInfo.votingStatus == "VOTING IN PROGRESS"){
                 this.props.updateVotingStatus('VOTING DONE');
             }
         }, 45000);
